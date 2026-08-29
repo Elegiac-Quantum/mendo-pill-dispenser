@@ -1,5 +1,14 @@
 {
   ".gitignore": "1efe42ef286b88d3f149a30f4dae7e7f70393bfa13b0763f4e11ad1452547d6b",
+  "docs/images/gallery/development-parts.jpg": "93ec55bf257d1f6085188da27a06c70b8388933a730d565da88d98db68aece3f",
+  "docs/images/gallery/esp32-electronics.jpg": "faefc305ce0ea3c70cb0a6ce9708747d667ecf878ba71aa5e6deb31efadddef4",
+  "docs/images/gallery/loaded-rotary-tray.jpg": "14e607ded8adaaaa3e55d01ab4f047330a28616bdfc8e98b46c48d7817280b8a",
+  "docs/images/gallery/mendo-complete.jpg": "f997bed14e2a2a0164eb9908f33c5e1694fe8f647ee2a7a727aabe2760a081ce",
+  "docs/images/gallery/mt6701-installation.jpg": "6f94d80927ed1f87ff359c08cea4e601350e744689d35aaf1f328d49476cf07d",
+  "docs/images/gallery/printable-parts-render.svg": "9f7a3d35709c3d67a435466f30791fd061dc1a27cfb445f44d61493b9da48529",
+  "docs/images/gallery/prototype-family.jpg": "edf6bbeecc5b8fb8586a7ecc25321ae721ca79f297ad04cf38c0bd8e30b9c25c",
+  "docs/images/gallery/rotary-mechanism.jpg": "444f10aac7410c56367bde146243cbbc8079c92a2b4d3fcfbdfcf125129c750e",
+  "docs/images/gallery/rotary-tray-render.svg": "bcf457a7d62ca034b00337130ff2d0c43a9beeef695753ffd84da3f488666f68",
   "docs/images/mendo-prototype.jpg": "7edd05a856949e512cd57326de085f4da236c0e70d58acf1f2fd7f8ee4557013",
   "docs/mesh-check.json": "f2e7fc15e145ad8e86056734d9ddf4c7aec29edde5fe3201aaa9dc6b9d5eb961",
   "docs/MODELS.md": "e624dce0f20853274a20d9d56bdb0cb6d5bdd891473281abe61701f2ceb477da",
@@ -128,6 +137,8 @@
   "models/stl/11_dust_lid_handle.stl": "6a30bbb8726693fe91fa10c16ed529da3d3bba18e7bf6fc405686d8c3b8f2282",
   "models/stl/12_upper_shell.stl": "0bc646c8e25782252842ed7d504d96de2d897612683b9c6e0c5fdf4fa220d343",
   "models/stl/13_upper_handle.stl": "4adbe3750cf6669caa38042a5dbeb1739f615392640c3e2e1ba08aea2c873429",
-  "README.md": "01f3914a2e9a08ebc7c2f087091a6ab244243676858a8c4e16ac06349e7eb4dc",
-  "THIRD_PARTY_NOTICES.md": "604a8e5a28f199bcd5a83376c46a4347b3a09eaa52b893064fd8c875f1f8d715"
+  "README.md": "0239492712708acf84d87627920094636d624522667aee40ec2e13c83d80c7e5",
+  "THIRD_PARTY_NOTICES.md": "604a8e5a28f199bcd5a83376c46a4347b3a09eaa52b893064fd8c875f1f8d715",
+  "tools/render_stl_svg.py": "54fdf81586330f7e38c71587f763e033ec1e9ecd07e4ab30c4f79e961660a414",
+  "tools/validate_gallery.py": "8616a7fad16594af5f60c253305129e58eac7757bea8f70cd92eae68657f3733"
 }

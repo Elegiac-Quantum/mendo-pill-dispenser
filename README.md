@@ -2,7 +2,7 @@
 
 ### A pill-dispenser prototype by EQ Studio
 
-![Mendo working prototype](docs/images/mendo-prototype.jpg)
+![Completed Mendo prototype](docs/images/gallery/mendo-complete.jpg)
 
 Mendo explores how a simple physical reminder, readable display and removable
 medication tray can support a caregiver's routine. This repository documents
@@ -21,6 +21,37 @@ sole safeguard for a person's medication.** See [safety and review](docs/REVIEW.
 
 The caregiver loads doses in order. This is not a machine that identifies pills,
 counts arbitrary pills, verifies ingestion or decides a medication plan.
+
+## Prototype gallery
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/images/gallery/loaded-rotary-tray.jpg" alt="Fifteen-compartment tray loaded for a mechanism test"><br><sub>Fifteen compartments loaded in sequence for a mechanism test.</sub></td>
+    <td width="50%"><img src="docs/images/gallery/rotary-mechanism.jpg" alt="Rotary tray and servo pinion"><br><sub>The tray's perimeter gear is driven by the servo pinion.</sub></td>
+  </tr>
+  <tr>
+    <td><img src="docs/images/gallery/esp32-electronics.jpg" alt="ESP32-S3 electronics inside the enclosure"><br><sub>ESP32-S3 development board and prototype wiring inside the enclosure.</sub></td>
+    <td><img src="docs/images/gallery/mt6701-installation.jpg" alt="MT6701 angle sensor installation"><br><sub>MT6701 angle-feedback module held by its printed adapter.</sub></td>
+  </tr>
+</table>
+
+### From parts to prototype
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/images/gallery/development-parts.jpg" alt="Printed parts and sensor during development"><br><sub>Printed parts, sensor mounts and tray iterations during development.</sub></td>
+    <td width="50%"><img src="docs/images/gallery/prototype-family.jpg" alt="Three Mendo prototype builds"><br><sub>Several physical builds used to test fit, assembly and repeatability.</sub></td>
+  </tr>
+</table>
+
+### Geometry previews
+
+These previews are rendered directly from the published STL geometry. They are
+not photographs and do not add parts that are absent from the downloadable files.
+
+![Rendered 15-compartment tray geometry](docs/images/gallery/rotary-tray-render.svg)
+
+![Rendered overview of the printable parts](docs/images/gallery/printable-parts-render.svg)
 
 ## Repository
 
