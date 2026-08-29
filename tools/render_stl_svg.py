@@ -49,8 +49,13 @@ def project_faces(faces, max_faces=1800):
     return sorted(projected, key=lambda item: item[0])
 
 
-def render_panel(path: Path, x, y, width, height, label, color):
-    faces = project_faces(read_stl(path))
+def shade_color(color, strength):
+    red, green, blue = (int(color[index:index + 2], 16) for index in (1, 3, 5))
+    return f"#{int(red * strength):02x}{int(green * strength):02x}{int(blue * strength):02x}"
+
+
+def render_panel(path: Path, x, y, width, height, label, color, max_faces=1800):
+    faces = project_faces(read_stl(path), max_faces=max_faces)
     all_points = [point for _, face in faces for point in face]
     min_x = min(point[0] for point in all_points)
     max_x = max(point[0] for point in all_points)
@@ -67,9 +72,10 @@ def render_panel(path: Path, x, y, width, height, label, color):
         vx, vy, vz = p2[0] - p0[0], p2[1] - p0[1], p2[2] - p0[2]
         nx, ny, nz = uy * vz - uz * vy, uz * vx - ux * vz, ux * vy - uy * vx
         length = max(math.sqrt(nx * nx + ny * ny + nz * nz), 1e-9)
-        shade = max(0.35, min(1.0, 0.58 + 0.42 * (nx * light[0] + ny * light[1] + nz * light[2]) / length))
+        light_value = abs((nx * light[0] + ny * light[1] + nz * light[2]) / length)
+        shade = 0.48 + 0.52 * light_value
         coords = " ".join(f"{x + width / 2 + (px - center_x) * scale:.1f},{y + (height - 22) / 2 + (py - center_y) * scale:.1f}" for px, py, _ in face)
-        output.append(f'<polygon points="{coords}" fill="{color}" fill-opacity="{shade:.2f}" stroke="#173a34" stroke-opacity=".14" stroke-width=".45"/>')
+        output.append(f'<polygon points="{coords}" fill="{shade_color(color, shade)}" stroke="#102b26" stroke-opacity=".08" stroke-width=".35"/>')
     output.append(f'<text x="{x + 18}" y="{y + height - 16}" font-family="Segoe UI,Arial,sans-serif" font-size="16" font-weight="600" fill="#153d36">{label}</text>')
     return "\n".join(output)
 
@@ -101,7 +107,8 @@ def main():
     panels = []
     for index, (path, label, color) in enumerate(items):
         column, row = index % columns, index // columns
-        panels.append(render_panel(path, margin + column * (panel_width + gap), margin + row * (panel_height + gap), panel_width, panel_height, label, color))
+        face_limit = 40000 if mode == "rotor" else 1800
+        panels.append(render_panel(path, margin + column * (panel_width + gap), margin + row * (panel_height + gap), panel_width, panel_height, label, color, max_faces=face_limit))
     svg = f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}"><rect width="100%" height="100%" fill="#eef6f3"/>{"".join(panels)}</svg>'
     output.write_text(svg, encoding="utf-8")
 
