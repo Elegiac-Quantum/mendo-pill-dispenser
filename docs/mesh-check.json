@@ -1,0 +1,236 @@
+[
+  {
+    "part": "01_base_Mendo_EQ_Studio.stl",
+    "watertight": true,
+    "volume_mm3": 229851.92396764105,
+    "bounds": [
+      [
+        -100.0,
+        -90.0,
+        0.0
+      ],
+      [
+        100.0,
+        90.0,
+        71.2
+      ]
+    ],
+    "triangles": 18980
+  },
+  {
+    "part": "02_fixed_deck.stl",
+    "watertight": true,
+    "volume_mm3": 144832.1499641904,
+    "bounds": [
+      [
+        -100.0,
+        -90.0,
+        0.0
+      ],
+      [
+        100.0,
+        90.0,
+        16.0
+      ]
+    ],
+    "triangles": 10716
+  },
+  {
+    "part": "03_rotor_15_cells.stl",
+    "watertight": true,
+    "volume_mm3": 64443.59710667841,
+    "bounds": [
+      [
+        -68.9988,
+        -68.9988,
+        0.0
+      ],
+      [
+        68.9988,
+        68.9988,
+        20.0
+      ]
+    ],
+    "triangles": 28528
+  },
+  {
+    "part": "04_servo_pinion.stl",
+    "watertight": true,
+    "volume_mm3": 2230.003048436496,
+    "bounds": [
+      [
+        -12.9951,
+        -12.9951,
+        0.0
+      ],
+      [
+        12.9951,
+        12.9951,
+        6.0
+      ]
+    ],
+    "triangles": 6448
+  },
+  {
+    "part": "05_servo_cradle.stl",
+    "watertight": true,
+    "volume_mm3": 13738.99091235701,
+    "bounds": [
+      [
+        -17.0,
+        -29.0,
+        0.0
+      ],
+      [
+        17.0,
+        29.0,
+        43.0
+      ]
+    ],
+    "triangles": 1296
+  },
+  {
+    "part": "06_medicine_cup.stl",
+    "watertight": true,
+    "volume_mm3": 27951.746930280005,
+    "bounds": [
+      [
+        -29.0,
+        -32.5,
+        0.0
+      ],
+      [
+        29.0,
+        45.5,
+        29.0
+      ]
+    ],
+    "triangles": 996
+  },
+  {
+    "part": "07_MT6701_adapter.stl",
+    "watertight": true,
+    "volume_mm3": 6061.107975009602,
+    "bounds": [
+      [
+        -19.0,
+        -19.0,
+        0.0
+      ],
+      [
+        19.0,
+        19.0,
+        6.0
+      ]
+    ],
+    "triangles": 2388
+  },
+  {
+    "part": "08_screen_frame.stl",
+    "watertight": true,
+    "volume_mm3": 5223.172991599496,
+    "bounds": [
+      [
+        87.0,
+        97.0,
+        0.0
+      ],
+      [
+        169.0,
+        159.0,
+        4.7
+      ]
+    ],
+    "triangles": 12840
+  },
+  {
+    "part": "09_button_clamp.stl",
+    "watertight": true,
+    "volume_mm3": 2179.077721488,
+    "bounds": [
+      [
+        -16.0,
+        -12.5,
+        0.0
+      ],
+      [
+        19.5,
+        12.5,
+        6.0
+      ]
+    ],
+    "triangles": 1732
+  },
+  {
+    "part": "10_dust_lid_body.stl",
+    "watertight": true,
+    "volume_mm3": 56840.63876434144,
+    "bounds": [
+      [
+        -67.8,
+        -67.8,
+        0.0
+      ],
+      [
+        67.8,
+        67.8,
+        9.8
+      ]
+    ],
+    "triangles": 11180
+  },
+  {
+    "part": "11_dust_lid_handle.stl",
+    "watertight": true,
+    "volume_mm3": 3049.6712219764704,
+    "bounds": [
+      [
+        -11.0,
+        -11.0,
+        0.0
+      ],
+      [
+        11.0,
+        11.0,
+        18.0
+      ]
+    ],
+    "triangles": 15220
+  },
+  {
+    "part": "12_upper_shell.stl",
+    "watertight": true,
+    "volume_mm3": 71401.75597718636,
+    "bounds": [
+      [
+        -98.0,
+        -88.0,
+        0.0
+      ],
+      [
+        98.0,
+        88.0,
+        36.0
+      ]
+    ],
+    "triangles": 2164
+  },
+  {
+    "part": "13_upper_handle.stl",
+    "watertight": true,
+    "volume_mm3": 7029.620911719212,
+    "bounds": [
+      [
+        -41.9996,
+        -22.9984,
+        0.0004
+      ],
+      [
+        41.9996,
+        2.8,
+        9.9996
+      ]
+    ],
+    "triangles": 32028
+  }
+]

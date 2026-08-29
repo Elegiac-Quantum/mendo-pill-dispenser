@@ -1,0 +1,5 @@
+dependencies:
+  idf: "==5.5.4"
+  espressif/esp_codec_dev: "==1.6.1"
+  espressif/esp-sr: "~2.1.5"
+  78/esp-opus-encoder: "~2.4.1"

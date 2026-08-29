@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#087f83">
+  <title>Smart Pill Dispenser</title>
+  <link rel="stylesheet" href="/styles.css?v=4">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Primary navigation">
+      <div class="brand">
+        <strong>Smart Pill Dispenser</strong>
+        <span class="online"><i aria-hidden="true"></i><span id="connection-state">Setup mode</span></span>
+      </div>
+      <nav>
+        <button class="nav-item active" data-view="overview" aria-current="page">Overview</button>
+        <button class="nav-item" data-view="schedules">Schedules</button>
+        <button class="nav-item" data-view="device">Device</button>
+        <button class="nav-item" data-view="settings">Settings</button>
+        <button class="nav-item" data-view="test">Test</button>
+      </nav>
+      <div class="help">
+        <strong>Need help?</strong>
+        <a href="/guide">Check the user guide</a>
+      </div>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <span class="clock-state" id="clock-state">Checking RTC</span>
+        <time id="device-time">Time not confirmed</time>
+        <button class="button primary" id="sync-clock" type="button">Sync time</button>
+        <button class="button secondary" id="language-toggle" type="button">中文</button>
+      </header>
+
+      <div class="content" id="overview-view">
+        <section class="top-grid" aria-label="Dose and device summary">
+          <article class="panel next-dose">
+            <h1>Next dose</h1>
+            <div class="dose-body">
+              <div class="medicine-symbol" aria-hidden="true">+</div>
+              <div>
+                <h2 id="next-medication">No active schedule</h2>
+                <p class="dose" id="next-dose-instruction">Caregiver setup required</p>
+                <p class="dose-time" id="next-dose-time">No dose scheduled</p>
+              </div>
+            </div>
+            <p class="subtle">Automatic dispensing runs only for a validated RTC and an enabled schedule.</p>
+          </article>
+
+          <article class="panel health" id="device-section">
+            <h2>Device health</h2>
+            <dl>
+              <div><dt>I2C bus</dt><dd class="pending" data-health="i2c">Checking</dd></div>
+              <div><dt>I/O expander</dt><dd class="pending" data-health="io_expander">Checking</dd></div>
+              <div><dt>TF card</dt><dd class="pending" data-health="tf_card">Checking</dd></div>
+              <div><dt>Audio codec</dt><dd class="pending" data-health="audio">Checking</dd></div>
+              <div><dt>Rotary drive</dt><dd class="pending" data-health="servo">Checking</dd></div>
+              <div><dt>RTC hardware</dt><dd class="pending" data-health="rtc">Checking</dd></div>
+            </dl>
+          </article>
+        </section>
+
+        <section class="panel schedules" id="schedules-section"
+                 aria-labelledby="schedule-title">
+          <div class="section-heading">
+            <div><h2 id="schedule-title">Medication schedules</h2><small>Load medicine in chronological order. Use one schedule per dispensing time and list medicines together.</small></div>
+            <button class="button primary" id="add-schedule">Add schedule</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Medicine</th><th>Dose</th><th>Times</th><th>Status</th><th><span class="sr-only">Actions</span></th></tr></thead>
+              <tbody id="schedule-rows"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="panel" aria-labelledby="reminder-title">
+          <h2 id="reminder-title">Current medication reminder</h2>
+          <p id="reminder-state">No medication reminder is active.</p>
+          <div class="audio-actions">
+            <button class="button primary" id="medicine-taken" disabled>I took the medicine</button>
+            <button class="button secondary" id="medicine-snooze" disabled>Remind me in 10 minutes</button>
+          </div>
+          <p class="safety-note" id="reminder-history">No response recorded yet.</p>
+        </section>
+
+        <section class="bottom-grid" id="settings-section">
+          <article class="panel" aria-labelledby="ai-connect-title">
+            <h2 id="ai-connect-title">AI voice connection</h2>
+            <p>Xiaozhi AI is already built in and bound. Only update Wi-Fi here; the setup hotspot remains available for recovery.</p>
+            <form id="ai-config-form">
+              <label>Wi-Fi name<input name="ssid" maxlength="32" autocomplete="off" required></label>
+              <label>Wi-Fi password<input name="password" type="password" minlength="8" maxlength="64" autocomplete="new-password" required></label>
+              <button class="button primary" type="submit">Save and connect</button>
+            </form>
+            <p class="safety-note" id="ai-config-state">Checking configuration</p>
+            <button class="button primary" id="talk-to-ai" type="button">Start talking</button>
+            <p class="safety-note" id="ai-talk-state">AI idle</p>
+            <label>Speaker volume (AI and reminders): <strong id="ai-volume-value">60%</strong>
+              <input id="ai-volume" type="range" min="0" max="100" step="1" value="60">
+            </label>
+            <button class="button" id="save-ai-volume" type="button">Save volume</button>
+            <p class="safety-note">Above 85% may be loud at close range. Increase gradually.</p>
+            <label>Silence threshold: <strong id="ai-vad-value">80</strong> <small>(recommended/default: 80)</small>
+              <input id="ai-vad" type="range" min="10" max="500" step="10" value="80">
+            </label>
+            <button class="button" id="save-ai-vad" type="button">Save silence threshold</button>
+            <button class="button secondary" id="reset-ai-vad" type="button">Restore recommended 80</button>
+            <p class="safety-note">80 is the value previously verified successfully on this dispenser.</p>
+            <p class="safety-note" id="ai-vad-range">Last detected range: unavailable</p>
+          </article>
+
+          <article class="panel activity">
+            <h2>Recent activity</h2>
+            <ol id="activity-list">
+              <li><time>Now</time><span>No recent medication activity</span></li>
+            </ol>
+            <a class="button secondary" href="/api/history/doses.csv"
+               download>Download dose history (CSV)</a>
+            <p class="safety-note">The history is stored on the TF card.</p>
+          </article>
+
+          <article class="panel" aria-labelledby="hotspot-title">
+            <h2 id="hotspot-title">Setup hotspot password</h2>
+            <p id="hotspot-name">Loading hotspot name...</p>
+            <label>New hotspot password
+              <input id="hotspot-password" type="password" minlength="8"
+                     maxlength="63" autocomplete="new-password">
+            </label>
+            <label>Confirm new password
+              <input id="hotspot-password-confirm" type="password" minlength="8"
+                     maxlength="63" autocomplete="new-password">
+            </label>
+            <button class="button primary" id="save-hotspot-password"
+                    type="button">Change hotspot password</button>
+            <p class="safety-note" id="hotspot-password-state">
+              The dispenser will restart. Reconnect using the new password.
+            </p>
+          </article>
+
+          <article class="panel" aria-labelledby="caregiver-pin-title">
+            <h2 id="caregiver-pin-title">Optional caregiver PIN</h2>
+            <p id="caregiver-pin-state">Checking PIN protection...</p>
+            <label>Caregiver PIN (4–8 digits)
+              <input id="caregiver-pin" type="password" inputmode="numeric"
+                     pattern="[0-9]{4,8}" minlength="4" maxlength="8"
+                     autocomplete="one-time-code">
+            </label>
+            <div class="audio-actions">
+              <button class="button primary" id="caregiver-unlock"
+                      type="button">Unlock settings</button>
+              <button class="button secondary" id="caregiver-set-pin"
+                      type="button">Set or change PIN</button>
+              <button class="button secondary" id="caregiver-disable-pin"
+                      type="button">Disable PIN</button>
+            </div>
+            <p class="safety-note">PIN protection is optional. Patient reminder buttons and AI conversation remain available.</p>
+          </article>
+
+          <article class="panel" aria-labelledby="fleet-title">
+            <h2 id="fleet-title">Remote administrator pairing</h2>
+            <p>Pair once, then this dispenser can be monitored and configured across different networks through HTTPS.</p>
+            <label><input id="fleet-enabled" type="checkbox"> Enable remote monitoring</label>
+            <label>HTTPS server address<input id="fleet-url" type="url" placeholder="https://admin.example.com"></label>
+            <label>Device ID<input id="fleet-device-id" maxlength="40" placeholder="MENDO-AE29"></label>
+            <label>One-time device token<input id="fleet-token" type="password" maxlength="95" autocomplete="new-password"></label>
+            <button class="button primary" id="save-fleet" type="button">Pair remote administrator</button>
+            <p class="safety-note" id="fleet-state">Remote status not checked.</p>
+          </article>
+
+        </section>
+
+        <section class="bottom-grid" id="test-section" aria-label="Hardware tests">
+          <article class="panel" aria-labelledby="button-test-title">
+            <h2 id="button-test-title">Patient button test</h2>
+            <p>Press the physical “I took the medicine” button. Testing without an active reminder does not record a dose.</p>
+            <p class="button-indicator" id="patient-button-state">Waiting for button...</p>
+            <p class="safety-note" id="patient-button-count">Detected presses: 0</p>
+          </article>
+
+          <article class="panel audio-test" aria-labelledby="audio-test-title">
+            <h2 id="audio-test-title">Low-volume speaker test</h2>
+            <p>Plays one quiet 0.5-second tone. It does not move the dispenser or activate a schedule.</p>
+            <label class="confirm"><input type="checkbox" id="audio-confirm"> I am ready for a quiet test tone.</label>
+            <div class="audio-actions">
+              <button class="button primary" id="play-audio" disabled>Play 0.5 second tone</button>
+              <button class="button secondary" id="stop-audio">Stop sound</button>
+              <button class="button secondary" id="test-microphone">Test microphone (3 seconds)</button>
+            </div>
+            <p class="safety-note" id="audio-state">Audio idle</p>
+            <hr>
+            <h3>Medication reminder sound</h3>
+            <p>Customize the spoken message and alarm separately. The spoken message uses the first 30 seconds; the alarm uses the first 50 seconds and repeats until the patient button is pressed.</p>
+            <h4>Spoken medication message</h4>
+            <label>Spoken message
+              <select id="spoken-sound-mode">
+                <option value="default">Built-in “Please take your medicine”</option>
+                <option value="custom">Uploaded spoken message</option>
+              </select>
+            </label>
+            <input id="spoken-file" type="file" accept="audio/*,.wav,.mp3,.m4a,.aac,.ogg,.opus,.webm,.flac,.amr,.3gp,.3gpp">
+            <div class="audio-actions">
+              <button class="button primary" id="upload-spoken">Upload spoken message</button>
+              <button class="button secondary" id="play-spoken">Preview spoken message</button>
+              <button class="button secondary" id="save-spoken-sound">Save spoken message</button>
+            </div>
+            <p class="safety-note" id="spoken-state">Built-in spoken message selected</p>
+            <h4>Alarm after the message</h4>
+            <label>Alarm sound
+              <select id="alarm-sound-mode">
+                <option value="default">Built-in alarm bell</option>
+                <option value="custom">Uploaded alarm sound</option>
+              </select>
+            </label>
+            <input id="alarm-file" type="file" accept="audio/*,.wav,.mp3,.m4a,.aac,.ogg,.opus,.webm,.flac,.amr,.3gp,.3gpp">
+            <div class="audio-actions">
+              <button class="button primary" id="upload-alarm">Upload alarm sound</button>
+              <button class="button secondary" id="play-alarm">Preview alarm sound</button>
+              <button class="button secondary" id="save-alarm-sound">Save alarm sound</button>
+            </div>
+            <p class="safety-note" id="alarm-state">Built-in alarm bell selected</p>
+          </article>
+
+          <article class="danger-zone" aria-labelledby="test-title">
+            <h2 id="test-title">Test dispenser <small>(manual test only)</small></h2>
+            <h3>Tray alignment reference</h3>
+            <p>Manually align one compartment with the outlet, then save that position as the movement reference. The tray will not move.</p>
+            <label class="confirm"><input type="checkbox" id="reference-confirm"> The compartment is correctly aligned with the outlet.</label>
+            <button class="button secondary" id="set-tray-reference" disabled>Use current position as start</button>
+            <p class="safety-note" id="tray-reference-state">Alignment reference unchanged.</p>
+            <p>Moves the dispenser forward by one slot. It does not mark medicine as taken.</p>
+            <label class="confirm"><input type="checkbox" id="movement-confirm"> I have removed medicine and kept hands clear.</label>
+            <button class="button danger" id="test-dispenser" disabled>Move one slot</button>
+            <p class="safety-note" id="dispenser-test-state">Manual test ready.</p>
+          </article>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <dialog id="schedule-dialog">
+    <form method="dialog" id="schedule-form">
+      <div class="dialog-heading"><h2>Add schedule draft</h2><button value="cancel" class="icon-button" aria-label="Close">&times;</button></div>
+      <label>Medication name<input name="medicine" maxlength="64" required></label>
+      <label>Dose instruction<input name="dose" maxlength="128" required></label>
+      <label>Daily time<input name="time" type="time" required></label>
+      <div class="dialog-actions"><button value="cancel" class="button secondary">Cancel</button><button type="submit" value="default" class="button primary">Save inactive draft</button></div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="/app.js?v=19" defer></script>
+</body>
+</html>

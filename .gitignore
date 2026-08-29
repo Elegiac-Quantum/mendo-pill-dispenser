@@ -1,0 +1,16 @@
+build*/
+managed_components/
+.tools/
+sdkconfig
+sdkconfig.old
+.env*
+*.log
+*.bin
+*.elf
+*.map
+*.pem
+*.key
+*.jks
+*.keystore
+__pycache__/
+.DS_Store
