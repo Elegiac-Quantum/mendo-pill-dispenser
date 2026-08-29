@@ -46,12 +46,35 @@ counts arbitrary pills, verifies ingestion or decides a medication plan.
 
 ### Geometry previews
 
-These previews are rendered directly from the published STL geometry. They are
-not photographs and do not add parts that are absent from the downloadable files.
+These OpenSCAD previews are rendered directly from every triangle in the
+published STL geometry. They are not photographs and do not add parts that are
+absent from the downloadable files.
 
-![Rendered 15-compartment tray geometry](docs/images/gallery/rotary-tray-render.svg)
+![OpenSCAD render of the 15-compartment tray](docs/images/gallery/rotary-tray-render.png)
 
-![Rendered overview of the printable parts](docs/images/gallery/printable-parts-render.svg)
+<table>
+  <tr>
+    <td width="25%"><img src="docs/images/gallery/parts-renders/01_base_Mendo_EQ_Studio.png" alt="Rendered branded base"><br><sub>Branded base</sub></td>
+    <td width="25%"><img src="docs/images/gallery/parts-renders/02_fixed_deck.png" alt="Rendered fixed deck"><br><sub>Fixed deck</sub></td>
+    <td width="25%"><img src="docs/images/gallery/parts-renders/03_rotor_15_cells.png" alt="Rendered rotary tray"><br><sub>Rotary tray</sub></td>
+    <td width="25%"><img src="docs/images/gallery/parts-renders/04_servo_pinion.png" alt="Rendered servo pinion"><br><sub>Servo pinion</sub></td>
+  </tr>
+  <tr>
+    <td><img src="docs/images/gallery/parts-renders/05_servo_cradle.png" alt="Rendered servo cradle"><br><sub>Servo cradle</sub></td>
+    <td><img src="docs/images/gallery/parts-renders/06_medicine_cup.png" alt="Rendered medicine cup"><br><sub>Medicine cup</sub></td>
+    <td><img src="docs/images/gallery/parts-renders/07_MT6701_adapter.png" alt="Rendered MT6701 adapter"><br><sub>MT6701 adapter</sub></td>
+    <td><img src="docs/images/gallery/parts-renders/08_screen_frame.png" alt="Rendered screen frame"><br><sub>Screen frame</sub></td>
+  </tr>
+  <tr>
+    <td><img src="docs/images/gallery/parts-renders/09_button_clamp.png" alt="Rendered button clamp"><br><sub>Button clamp</sub></td>
+    <td><img src="docs/images/gallery/parts-renders/10_dust_lid_body.png" alt="Rendered dust lid"><br><sub>Dust lid</sub></td>
+    <td><img src="docs/images/gallery/parts-renders/11_dust_lid_handle.png" alt="Rendered lid handle"><br><sub>Lid handle</sub></td>
+    <td><img src="docs/images/gallery/parts-renders/12_upper_shell.png" alt="Rendered upper shell"><br><sub>Upper shell</sub></td>
+  </tr>
+  <tr>
+    <td><img src="docs/images/gallery/parts-renders/13_upper_handle.png" alt="Rendered upper handle"><br><sub>Upper handle</sub></td>
+  </tr>
+</table>
 
 ## Repository
 

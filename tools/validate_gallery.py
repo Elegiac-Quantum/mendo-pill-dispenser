@@ -5,7 +5,6 @@ from __future__ import annotations
 import hashlib
 import json
 import re
-import xml.etree.ElementTree as ET
 from pathlib import Path
 
 
@@ -18,13 +17,6 @@ def main():
     missing = [reference for reference in references if not (ROOT / reference).exists()]
     if missing:
         raise SystemExit(f"Missing README images: {missing}")
-
-    for svg in sorted((ROOT / "docs/images/gallery").glob("*.svg")):
-        root = ET.parse(svg).getroot()
-        polygons = root.findall("{http://www.w3.org/2000/svg}polygon")
-        if not polygons:
-            raise SystemExit(f"Render has no geometry: {svg.name}")
-        print(f"{svg.name}: {len(polygons)} rendered faces")
 
     manifest = {
         str(path.relative_to(ROOT)).replace("\\", "/"): hashlib.sha256(path.read_bytes()).hexdigest()
