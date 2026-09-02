@@ -1,12 +1,17 @@
 # Mendo 萌豆药盒
 
-### A pill-dispenser prototype by EQ Studio
+### ESP32-S3 smart pill dispenser and medication reminder by EQ Studio
 
 ![Completed Mendo prototype](docs/images/gallery/mendo-complete.jpg)
 
-Mendo explores how a simple physical reminder, readable display and removable
-medication tray can support a caregiver's routine. This repository documents
-EQ Studio's single-layer, 15-compartment prototype and its development.
+Mendo is an experimental ESP32-S3 smart pill dispenser and medication reminder
+with a 3D-printed, 15-compartment rotary tray. It combines RTC scheduling,
+caregiver web controls, audio alerts and MT6701 position feedback in a compact
+assistive-technology prototype by EQ Studio.
+
+This repository contains the ESP-IDF firmware, printable STL/3MF models,
+editable OpenSCAD files, assembly documentation and photographs of working
+physical prototypes.
 
 **Experimental prototype, not a certified medical device. Do not use it as the
 sole safeguard for a person's medication.** See [safety and review](docs/REVIEW.md).

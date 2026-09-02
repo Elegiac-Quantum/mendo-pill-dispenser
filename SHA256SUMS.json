@@ -149,7 +149,7 @@
   "models/stl/11_dust_lid_handle.stl": "6a30bbb8726693fe91fa10c16ed529da3d3bba18e7bf6fc405686d8c3b8f2282",
   "models/stl/12_upper_shell.stl": "0bc646c8e25782252842ed7d504d96de2d897612683b9c6e0c5fdf4fa220d343",
   "models/stl/13_upper_handle.stl": "4adbe3750cf6669caa38042a5dbeb1739f615392640c3e2e1ba08aea2c873429",
-  "README.md": "b704103a0ee782518c0c1b46d48cbd2558108a3e326a86bafd5277480c6bdbaa",
+  "README.md": "63da893a83ec1f9e18a7797cb6e42cf2c67dba13eb16e090910a1f08983556b3",
   "THIRD_PARTY_NOTICES.md": "604a8e5a28f199bcd5a83376c46a4347b3a09eaa52b893064fd8c875f1f8d715",
   "tools/__pycache__/render_stl_svg.cpython-312.pyc": "f09669e27ccb89c982449e1319a0d937a9908ec49330537ca504b13ff8ada30d",
   "tools/render_part.scad": "a69f9874f0b9e899914a7d4b7d5bb497a895cce486ad418a301575bbbf4bd43c",
