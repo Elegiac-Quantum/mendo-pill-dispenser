@@ -2,7 +2,7 @@
 
 ### ESP32-S3 smart pill dispenser and medication reminder by EQ Studio
 
-![Completed Mendo prototype](docs/images/gallery/mendo-complete.jpg)
+![Closed Mendo prototype photographed from the front](docs/images/gallery/mendo-closed-front.jpg)
 
 Mendo is an experimental ESP32-S3 smart pill dispenser and medication reminder
 with a 3D-printed, 15-compartment rotary tray. It combines RTC scheduling,
@@ -37,6 +37,19 @@ counts arbitrary pills, verifies ingestion or decides a medication plan.
   <tr>
     <td><img src="docs/images/gallery/esp32-electronics.jpg" alt="ESP32-S3 electronics inside the enclosure"><br><sub>ESP32-S3 development board and prototype wiring inside the enclosure.</sub></td>
     <td><img src="docs/images/gallery/mt6701-installation.jpg" alt="MT6701 angle sensor installation"><br><sub>MT6701 angle-feedback module held by its printed adapter.</sub></td>
+  </tr>
+</table>
+
+### A closer look at the current build
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/images/gallery/mendo-tray-overhead.jpg" alt="Top-down view of Mendo's fifteen-compartment rotary tray"><br><sub>The open tray shows all fifteen compartments and the servo pinion at the edge.</sub></td>
+    <td width="50%"><img src="docs/images/gallery/mendo-covered-drive.jpg" alt="Mendo rotary mechanism with its circular cover installed"><br><sub>The circular cover sits above the geared tray during an assembly check.</sub></td>
+  </tr>
+  <tr>
+    <td><img src="docs/images/gallery/mendo-closed-front.jpg" alt="Closed Mendo prototype viewed from the front"><br><sub>The current enclosure with its translucent upper shell, display, button and receiving cup.</sub></td>
+    <td><img src="docs/images/gallery/mendo-shell-detail.jpg" alt="Close-up of Mendo's translucent printed upper shell"><br><sub>A close view of the rounded corner, layered surface and translucent material.</sub></td>
   </tr>
 </table>
 
